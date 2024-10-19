@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo Tube</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="./assets/Logo.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.13/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -17,7 +19,7 @@
 
             <div class="w-40 sm:w-40 lg:w-60 xl:w-96">
                 <label class="input input-bordered flex items-center gap-2">
-                    <input type="text" class="grow" placeholder="Search" />
+                    <input id="searchInput" type="text" class="grow" placeholder="Search" />
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
                         class="h-4 w-4 opacity-70">
                         <path fill-rule="evenodd"
@@ -30,9 +32,9 @@
                 <!-- <button class="btn btn-secondary bg-[#FF1F3D]">SORT</button> -->
                 <div class="avatar">
                     <div class="w-12 rounded-full border-2 border-purple-500">
-                      <img src="./assets/Formal Photo.jpeg" />
+                        <img src="./assets/Formal Photo.jpeg" />
                     </div>
-                  </div>
+                </div>
             </div>
         </nav>
     </header>
@@ -45,91 +47,29 @@
         </section>
 
         <section>
-            <!-- card container  -->
-            <div id="videoContainer" class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 px-5 lg:px-0">
-
-                <!-- single card -->
-                <!-- <div class="card bg-base-100 shadow-md">
-                    <figure>
-                      <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes" />
-                    </figure>
-                    <div class="flex py-5 pr-5 items-center gap-5">
-                        <div class="avatar">
-                            <div class="w-16 h-16 rounded-full">
-                              <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                            </div>
-                          </div>
-                          <div>
-                            <h1 class="text-xl font-semibold">Video Title</h1>
-                            <h2 class="text-lg font-medium text-gray-500">Channel Name</h2>
-                            <p class="text-gray-500">Views</p>
-                          </div>
-                      </div>
-                </div>
-                <div class="card bg-base-100  shadow-md">
-                    <figure>
-                      <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes" />
-                    </figure>
-                    <div class="flex py-5 pr-5 items-center gap-5">
-                        <div class="avatar">
-                            <div class="w-16 h-16 rounded-full">
-                              <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                            </div>
-                          </div>
-                          <div>
-                            <h1 class="text-xl font-semibold">Video Title</h1>
-                            <h2 class="text-lg font-medium text-gray-500">Channel Name</h2>
-                            <p class="text-gray-500">Views</p>
-                          </div>
-                      </div>
-                </div>
-                <div class="card bg-base-100  shadow-md">
-                    <figure>
-                      <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes" />
-                    </figure>
-                    <div class="flex py-5 pr-5 items-center gap-5">
-                        <div class="avatar">
-                            <div class="w-16 h-16 rounded-full">
-                              <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                            </div>
-                          </div>
-                          <div>
-                            <h1 class="text-xl font-semibold">Video Title</h1>
-                            <h2 class="text-lg font-medium text-gray-500">Channel Name</h2>
-                            <p class="text-gray-500">Views</p>
-                          </div>
-                      </div>
-                </div>
-                <div class="card bg-base-100  shadow-md">
-                    <figure>
-                      <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes" />
-                    </figure>
-                    <div class="flex py-5 pr-5 items-center gap-5">
-                        <div class="avatar">
-                            <div class="w-16 h-16 rounded-full">
-                              <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                            </div>
-                          </div>
-                          <div>
-                            <h1 class="text-xl font-semibold">Video Title</h1>
-                            <h2 class="text-lg font-medium text-gray-500">Channel Name</h2>
-                            <p class="text-gray-500">Views</p>
-                          </div>
-                      </div>
-                </div> -->
-
-            </div>
+            <!-- video card container  -->
+            <div id="videoSection"
+                class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 px-5 lg:px-0">
 
             </div>
         </section>
+
+        <!-- video details modal -->
+        <button id="showModalData" class="btn hidden" onclick="customModal.showModal()"> Details </button>
+        <dialog id="customModal" class="modal modal-bottom sm:modal-middle p-5 rounded-md">
+            <div class="modal-box">
+
+                <div  id="modalDetails">
+
+                </div>
+                
+                <div class="modal-action">
+                    <form method="dialog">
+                        <button class=" bg-red-600 py-1 lg:py-2 px-3 lg:px-5 rounded-md font-medium text-white">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
     </main>
 
 
